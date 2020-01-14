@@ -1,16 +1,16 @@
 <script>
   import { onMount } from 'svelte'
 
-  onMount(() => {
-    getGitHubUsers();
-  });
+  let users
 
-  function getGitHubUsers(){
+  onMount(() => {
+    getGitHubUsers()
+  })
+
+  function getGitHubUsers() {
     fetch('https://api.github.com/users')
     .then(response => response.json())
-    .then(data => { 
-      console.log(data);
-    })
+    .then(data => users = data)
   }
 </script>
 
@@ -19,5 +19,11 @@
 </style>
 
 <main>
-
+  {#if users}
+    <ul>
+      {#each users as user}
+        <li>{ user.login }</li>
+      {/each}
+    </ul>
+  {/if}
 </main>
