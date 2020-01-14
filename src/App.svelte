@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+  import User from './User.svelte'
 
   let users
 
@@ -22,7 +23,7 @@
   {#if users}
     <ul>
       {#each users as user}
-        <li>{ user.login }</li>
+        <User avatar={ user.avatar_url } username={ user.login } />
       {/each}
     </ul>
   {/if}
