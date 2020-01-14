@@ -7,6 +7,7 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "test": "jest tests",
+    "test:cover": "jest tests --coverage",
     "test:watch": "yarn test -- --watch"
   },
   "devDependencies": {
