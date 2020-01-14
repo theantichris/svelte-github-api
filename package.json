@@ -5,18 +5,47 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public",
+    "test": "jest tests",
+    "test:cover": "jest tests --coverage",
+    "test:watch": "yarn test -- --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^6.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/svelte": "^1.11.0",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^3.0.1",
     "rollup": "^1.20.0",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "svelte-jester": "^1.0.3"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   }
 }

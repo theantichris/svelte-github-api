@@ -30,7 +30,7 @@
   <h2>Search for Users</h2>
 
   <form on:submit={ handleSubmit }>
-    <input type="text" bind:value={ usernameQuery } />
+    <input type="text" placeholder="search..." bind:value={ usernameQuery } />
     <button>Search</button>
   </form>
 
